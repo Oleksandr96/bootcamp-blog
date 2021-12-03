@@ -1,0 +1,56 @@
+<form [formGroup]="newPostForm"
+      (ngSubmit)="submit()"
+      class="form">
+
+  <div class="form__item">
+    <label>Author</label>
+    <input type="text"
+           id="author"
+           name="author"
+           formControlName="author" />
+
+    <div *ngIf="newPostForm.get('author')!.invalid && newPostForm.get('author')!.touched"
+         class="validation">
+
+      <span *ngIf="newPostForm.get('author')!.errors?.['required']" >Field required</span>
+
+      <span *ngIf="newPostForm.get('author')!.errors?.['minlength']" >
+        The minimum field length is 3 characters. Current length is {{newPostForm.get('author')!.errors?.['minlength']['actualLength']}}
+      </span>
+
+    </div>
+
+  </div>
+  <div class="form__item">
+    <label>Title</label>
+    <input type="text"
+           formControlName="title"
+           id="title"
+           name="title" />
+
+    <div *ngIf="newPostForm.get('title')!.invalid && newPostForm.get('title')!.touched"
+         class="validation">
+
+      <span *ngIf="newPostForm.get('title')!.errors?.['required']"  >Field required</span>
+      <span *ngIf="newPostForm.get('title')!.errors?.['minlength']" >
+        The minimum field length is 10 characters. Current length is {{newPostForm.get('title')!.errors?.['minlength']['actualLength']}}
+      </span>
+    </div>
+
+  </div>
+  <div class="form__item">
+    <label>Text</label>
+    <textarea formControlName="text" id="text" name="text" ></textarea>
+    <div
+      *ngIf="newPostForm.get('text')!.invalid && newPostForm.get('text')!.touched"
+      class="validation">
+
+      <span *ngIf="newPostForm.get('text')!.errors?.['required']" >Field required</span>
+      <span *ngIf="newPostForm.get('text')!.errors?.['minlength']" >
+        The minimum field length is 30 characters. Current length is {{newPostForm.get('text')!.errors?.['minlength']['actualLength']}}
+      </span>
+    </div>
+
+  </div>
+  <button class="primary-btn"  type="submit" [disabled]="newPostForm.invalid" >Save</button>
+</form>

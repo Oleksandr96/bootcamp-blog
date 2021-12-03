@@ -1,0 +1,29 @@
+header{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px;
+}
+.menu {
+  &__item{
+    color: #bababa;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 15px 5px;
+    transition: 0.5s;
+    &:hover{
+      color: black;
+      transition: 0.5s;
+    }
+  }
+  &__item--active{
+    color: black;
+  }
+  .material-icons-outlined{
+    vertical-align: bottom;
+  }
+}
+.header-title{
+  color: #60b65e;
+}
