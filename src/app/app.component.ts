@@ -1,22 +1,17 @@
 import { Component } from '@angular/core';
-import {AppPostsService} from "./services/app-posts.service";
-
+import { AppPostsService, Post } from './services/app-posts.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-
 export class AppComponent {
   title = 'bootcamp-blog';
 
-  posts = []
-
+  posts: Post[] = [];
 
   constructor(private appPostsService: AppPostsService) {
-    // @ts-ignore
-    this.posts = this.appPostsService.getPosts()
+    this.posts = this.appPostsService.getPosts();
   }
-
 }
