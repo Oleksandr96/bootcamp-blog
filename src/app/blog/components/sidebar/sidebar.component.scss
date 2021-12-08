@@ -1,0 +1,11 @@
+@import "src/styles/_variables.scss";
+
+.sidebar {
+  color: $black;
+  background-color: $grey;
+  padding: 10px;
+  min-height: 30vh;
+  width: 15vw;
+  border-radius: 10px;
+
+}

@@ -1,0 +1,71 @@
+@import "src/styles/_variables.scss";
+.post {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+
+  hr {
+    margin: 5px 0;
+    background-color: $white;
+    border: none;
+    border-bottom: 1px solid $grey;
+  }
+
+  .meta {
+    display: flex;
+    align-content: space-between;
+    margin-top: 1rem;
+
+    .like-btn {
+      padding: 0 15px;
+      margin-left: auto;
+      height: 40px;
+      border: 1px solid #60b65e;
+      border-radius: 10px;
+      color: #60b65e;
+      background-color: $white;
+      cursor: pointer;
+      transition: 0.5s;
+
+      &--liked, &:hover {
+        color: $white;
+        background-color: $green-light;
+        transition: 0.5s;
+      }
+    }
+  }
+
+  &__author {
+    width: 80%;
+  }
+
+  &__author-img {
+    width: 50px;
+    margin: 0 1rem 1rem 0;
+  }
+
+  &__author-name {
+    color: $green-light;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__date, &__read-more {
+    color: $white;
+    font-size: 12px;
+  }
+
+  &__title {
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    color: $dark-grey;
+    margin-bottom: 15px;
+  }
+
+
+}

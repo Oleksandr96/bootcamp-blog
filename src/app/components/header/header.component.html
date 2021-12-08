@@ -1,0 +1,12 @@
+<header>
+  <div class="header-title">
+    <h1>My Blog</h1>
+  </div>
+  <nav class="menu">
+    <a class="menu__item menu__item--active" href="#">Home</a>
+    <a class="menu__item" href="#" (click)="modal = true">
+      <i class="far fa-edit"></i> New Article</a>
+    <a class="menu__item" href="#">User Name</a>
+  </nav>
+</header>
+<app-modal *ngIf="modal" (close)="modal=false"></app-modal>

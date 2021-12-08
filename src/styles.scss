@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+@import "styles/_variables.scss";
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+body{
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+.primary-btn{
+  padding: 10px;
+  background: $green;
+  color: $white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  &:disabled{
+    opacity: 0.5;
+  }
+}
+
+.btn-close{
+  border: none;
+  background: none;
+  border-radius: 50%;
+  width: 35px;
+  font-size: 25px;
+  height: 35px;
+  color: $dark-grey;
+  cursor: pointer;
+}
+
+

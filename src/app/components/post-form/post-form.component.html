@@ -1,0 +1,44 @@
+<form [formGroup]="newPostForm"
+      (ngSubmit)="submit()"
+      class="form">
+
+  <div class="form__item">
+    <label>Author</label>
+    <input type="text"
+           id="author"
+           name="author"
+           formControlName="author"/>
+
+    <div *ngIf="newPostFormErrors.author"
+         class="validation">
+      {{newPostFormErrors.author}}
+    </div>
+
+  </div>
+  <div class="form__item">
+    <label>Title</label>
+    <input type="text"
+           formControlName="title"
+           id="title"
+           name="title"/>
+
+    <div *ngIf="newPostFormErrors.title"
+         class="validation">
+      {{newPostFormErrors.title}}
+
+    </div>
+
+  </div>
+  <div class="form__item">
+    <label>Text</label>
+    <textarea formControlName="text" id="text" name="text"></textarea>
+    <div
+      *ngIf="newPostFormErrors.text"
+      class="validation">
+      {{newPostFormErrors.text}}
+
+    </div>
+
+  </div>
+  <button class="primary-btn" type="submit" [disabled]="newPostForm.invalid">Save</button>
+</form>
