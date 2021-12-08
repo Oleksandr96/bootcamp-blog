@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AppPostsService, Post } from './services/app-posts.service';
+import { AppPostsService } from './services/app-posts.service';
+import { Post } from './interfaces/post.interface';
 
 @Component({
   selector: 'app-root',

@@ -1,13 +1,5 @@
 import { Injectable } from '@angular/core';
-
-export interface Post {
-  id?: number;
-  title: string;
-  author: string;
-  text: string;
-  date: Date;
-  likes: number;
-}
+import { Post } from '../interfaces/post.interface';
 
 @Injectable({
   providedIn: 'root',
