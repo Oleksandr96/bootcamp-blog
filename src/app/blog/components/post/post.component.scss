@@ -1,3 +1,4 @@
+@import "src/styles/_variables.scss";
 .post {
   display: block;
   width: 100%;
@@ -5,9 +6,9 @@
 
   hr {
     margin: 5px 0;
-    background-color: #fdfdfd;
+    background-color: $white;
     border: none;
-    border-bottom: 1px solid #ededed;
+    border-bottom: 1px solid $grey;
   }
 
   .meta {
@@ -22,13 +23,13 @@
       border: 1px solid #60b65e;
       border-radius: 10px;
       color: #60b65e;
-      background-color: #fff;
+      background-color: $white;
       cursor: pointer;
       transition: 0.5s;
 
       &--liked, &:hover {
-        color: #fff;
-        background-color: #60b65e;
+        color: $white;
+        background-color: $green-light;
         transition: 0.5s;
       }
     }
@@ -44,13 +45,13 @@
   }
 
   &__author-name {
-    color: #60b65e;
+    color: $green-light;
     font-size: 18px;
     font-weight: bold;
   }
 
   &__date, &__read-more {
-    color: #dfdfdf;;
+    color: $white;
     font-size: 12px;
   }
 
@@ -62,7 +63,7 @@
   }
 
   &__content {
-    color: #bababa;
+    color: $dark-grey;
     margin-bottom: 15px;
   }
 

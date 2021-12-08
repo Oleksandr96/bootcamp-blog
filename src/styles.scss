@@ -1,4 +1,4 @@
-
+@import "styles/_variables.scss";
 
 *{
   margin: 0;
@@ -12,8 +12,8 @@ body{
 
 .primary-btn{
   padding: 10px;
-  background: #4caf50;
-  color: white;
+  background: $green;
+  color: $white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -29,7 +29,7 @@ body{
   width: 35px;
   font-size: 25px;
   height: 35px;
-  color: #bababa;
+  color: $dark-grey;
   cursor: pointer;
 }
 

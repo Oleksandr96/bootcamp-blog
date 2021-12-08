@@ -1,3 +1,6 @@
+@import "src/styles/_variables.scss";
+
+
 header {
   display: flex;
   flex-wrap: wrap;
@@ -8,20 +11,20 @@ header {
 
 .menu {
   &__item {
-    color: #bababa;
+    color: $dark-grey;
     font-weight: bold;
     text-decoration: none;
     padding: 15px 5px;
     transition: 0.5s;
 
     &:hover {
-      color: black;
+      color: $black;
       transition: 0.5s;
     }
   }
 
   &__item--active {
-    color: black;
+    color: $black;
   }
 
   .material-icons-outlined {
@@ -30,5 +33,5 @@ header {
 }
 
 .header-title {
-  color: #60b65e;
+  color: $green-light;
 }
