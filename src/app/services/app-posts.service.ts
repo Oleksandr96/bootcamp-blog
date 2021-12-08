@@ -8,6 +8,7 @@ export interface Post {
   date: Date;
   likes: number;
 }
+
 @Injectable({
   providedIn: 'root',
 })
@@ -36,6 +37,7 @@ export class AppPostsService {
     post.likes = 0;
     this.posts.unshift(post);
   }
+
   getPosts() {
     return this.posts;
   }

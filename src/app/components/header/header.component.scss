@@ -1,29 +1,34 @@
-header{
+header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 20px 10px;
 }
+
 .menu {
-  &__item{
+  &__item {
     color: #bababa;
     font-weight: bold;
     text-decoration: none;
     padding: 15px 5px;
     transition: 0.5s;
-    &:hover{
+
+    &:hover {
       color: black;
       transition: 0.5s;
     }
   }
-  &__item--active{
+
+  &__item--active {
     color: black;
   }
-  .material-icons-outlined{
+
+  .material-icons-outlined {
     vertical-align: bottom;
   }
 }
-.header-title{
+
+.header-title {
   color: #60b65e;
 }

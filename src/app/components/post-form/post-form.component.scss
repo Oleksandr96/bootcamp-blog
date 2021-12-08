@@ -1,24 +1,29 @@
-.form input, .form textarea{
-  &.ng-invalid.ng-touched{
+.form input, .form textarea {
+  &.ng-invalid.ng-touched {
     border: 2px solid #d00f0f;
   }
-  &.ng-valid.ng-touched{
-    border:2px solid #60b65e;
+
+  &.ng-valid.ng-touched {
+    border: 2px solid #60b65e;
   }
 }
-.form{
+
+.form {
   width: 500px;
   display: block;
-  &__item{
+
+  &__item {
     display: block;
     width: 100%;
     margin-bottom: 15px;
-    label{
+
+    label {
       display: block;
       margin: 5px 0 5px 0;
       font-weight: bold;
     }
-    input, textarea{
+
+    input, textarea {
       width: 100%;
       max-width: 100%;
       border-radius: 5px;

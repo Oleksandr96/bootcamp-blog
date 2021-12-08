@@ -1,18 +1,21 @@
-.post{
+.post {
   display: block;
   width: 100%;
   padding: 10px 0;
-  hr{
+
+  hr {
     margin: 5px 0;
     background-color: #fdfdfd;
     border: none;
     border-bottom: 1px solid #ededed;
   }
-  .meta{
+
+  .meta {
     display: flex;
-    align-content:space-between ;
+    align-content: space-between;
     margin-top: 1rem;
-    .like-btn{
+
+    .like-btn {
       padding: 0 15px;
       margin-left: auto;
       height: 40px;
@@ -22,36 +25,43 @@
       background-color: #fff;
       cursor: pointer;
       transition: 0.5s;
-      &--liked, &:hover{
+
+      &--liked, &:hover {
         color: #fff;
         background-color: #60b65e;
         transition: 0.5s;
       }
     }
   }
-  &__author{
+
+  &__author {
     width: 80%;
   }
-  &__author-img{
+
+  &__author-img {
     width: 50px;
     margin: 0 1rem 1rem 0;
   }
-  &__author-name{
+
+  &__author-name {
     color: #60b65e;
     font-size: 18px;
     font-weight: bold;
   }
-  &__date, &__read-more{
+
+  &__date, &__read-more {
     color: #dfdfdf;;
     font-size: 12px;
   }
-  &__title{
+
+  &__title {
     margin-bottom: 15px;
     font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
   }
-  &__content{
+
+  &__content {
     color: #bababa;
     margin-bottom: 15px;
   }

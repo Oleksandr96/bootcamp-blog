@@ -20,6 +20,7 @@ export class PostFormComponent implements OnInit {
       this.newPostForm.reset();
     }
   }
+
   ngOnInit(): void {
     this.newPostForm = new FormGroup({
       author: new FormControl('', [

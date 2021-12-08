@@ -1,4 +1,4 @@
-.modal-bg{
+.modal-bg {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -6,19 +6,22 @@
   left: 0;
   background-color: #0000005e;
 }
-.modal{
+
+.modal {
   position: fixed;
   padding: 2rem;
   background-color: white;
   left: 50%;
   transform: translate(-50%, 0);
-  &__title{
+
+  &__title {
     display: flex;
     justify-content: space-between;
     padding-bottom: 10px;
     border-bottom: 1px solid #bababa
   }
-  &__content{
+
+  &__content {
     margin-top: 30px;
   }
 }

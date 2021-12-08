@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -8,7 +8,7 @@ import { PostComponent } from './components/post/post.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
-import {AppPostsService} from "./services/app-posts.service";
+import { AppPostsService } from './services/app-posts.service';
 
 @NgModule({
   declarations: [
@@ -17,16 +17,10 @@ import {AppPostsService} from "./services/app-posts.service";
     PostComponent,
     SidebarComponent,
     ModalComponent,
-    PostFormComponent
+    PostFormComponent,
   ],
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserModule
-  ],
-  providers: [
-    AppPostsService
-  ],
-  bootstrap: [AppComponent]
+  imports: [FormsModule, ReactiveFormsModule, BrowserModule],
+  providers: [AppPostsService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
