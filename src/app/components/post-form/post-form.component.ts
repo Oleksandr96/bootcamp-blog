@@ -1,19 +1,21 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import {
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { AppPostsService } from '../../services/app-posts.service';
 import { Post } from '../../interfaces/post.interface';
-import { debounceTime, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-post-form',
+  selector: 'app-modal',
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.scss'],
 })
 export class PostFormComponent implements OnInit {
   newPostForm!: FormGroup;
-  newPostFormSubscription!: Subscription;
-
   newPostFormErrors: any = {
     author: null,
     title: null,
@@ -35,33 +37,43 @@ export class PostFormComponent implements OnInit {
     },
   };
 
-  constructor(private appPostsService: AppPostsService) {}
+  constructor(
+    public dialogRef: MatDialogRef<PostFormComponent>,
+    private appPostsService: AppPostsService
+  ) {}
+
+  dialogClose() {
+    this.newPostForm.reset();
+    this.dialogRef.close();
+  }
 
   submit(): void {
     if (this.newPostForm.valid) {
       const post: Post = this.newPostForm.value;
       this.appPostsService.updatePosts(post);
       this.newPostForm.reset();
+      this.dialogRef.close();
     }
   }
-  onInputChange() {
-    if (!this.newPostForm.valid) {
-      Object.keys(this.newPostFormErrors).forEach((field: string) => {
-        this.newPostFormErrors[field] = '';
-        let formInput = this.newPostForm.get(field);
 
-        if (!formInput!.valid && formInput!.dirty) {
-          let errorMessage = this.validationMessages[field];
-
-          Object.keys(formInput?.errors!).forEach((key: string) => {
-            if (errorMessage[key]) {
-              this.newPostFormErrors[field] = errorMessage[key];
-            }
-          });
-        }
-      });
+  onFormChange() {
+    if (this.newPostForm.valid) {
+      this.newPostFormErrors = [];
+      return;
     }
+    const form = this.newPostForm;
+    Object.keys(form.controls).forEach((formField) => {
+      this.newPostFormErrors[formField] = '';
+      const controlErrors: ValidationErrors = form.get(formField)!.errors!;
+      if (controlErrors && form.get(formField)?.dirty) {
+        Object.keys(controlErrors).forEach((keyError) => {
+          this.newPostFormErrors[formField] =
+            this.validationMessages[formField][keyError];
+        });
+      }
+    });
   }
+
   ngOnInit(): void {
     this.newPostForm = new FormGroup({
       author: new FormControl('', [
@@ -74,8 +86,7 @@ export class PostFormComponent implements OnInit {
       ]),
       text: new FormControl('', [Validators.required, Validators.minLength(5)]),
     });
-    this.newPostFormSubscription = this.newPostForm.valueChanges
-      .pipe(debounceTime(400))
-      .subscribe((x) => this.onInputChange());
+
+    this.newPostForm.valueChanges.subscribe((x) => this.onFormChange());
   }
 }

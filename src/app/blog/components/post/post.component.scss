@@ -1,15 +1,10 @@
 @import "src/styles/_variables.scss";
+
 .post {
   display: block;
   width: 100%;
-  padding: 10px 0;
-
-  hr {
-    margin: 5px 0;
-    background-color: $white;
-    border: none;
-    border-bottom: 1px solid $grey;
-  }
+  padding: 1rem;
+  margin-bottom: 1rem;
 
   .meta {
     display: flex;
@@ -20,9 +15,9 @@
       padding: 0 15px;
       margin-left: auto;
       height: 40px;
-      border: 1px solid #60b65e;
+      border: 1px solid $green;
       border-radius: 10px;
-      color: #60b65e;
+      color: $green;
       background-color: $white;
       cursor: pointer;
       transition: 0.5s;
@@ -51,12 +46,12 @@
   }
 
   &__date, &__read-more {
-    color: $white;
+    color: $dark-grey;
     font-size: 12px;
   }
 
   &__title {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
     font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
@@ -64,7 +59,7 @@
 
   &__content {
     color: $dark-grey;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
   }
 
 
