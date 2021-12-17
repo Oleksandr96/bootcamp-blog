@@ -5,20 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BlogComponent } from './blog.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+
+import { MaterialModule } from '../shared/material/material.module';
 
 @NgModule({
   declarations: [PostComponent, SidebarComponent, BlogComponent],
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-  ],
+  imports: [FormsModule, ReactiveFormsModule, BrowserModule, MaterialModule],
   providers: [AppPostsService],
   exports: [BlogComponent],
 })
