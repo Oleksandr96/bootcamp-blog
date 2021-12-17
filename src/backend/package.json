@@ -13,5 +13,9 @@
     "express"
   ],
   "author": "o. bukhanenko",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15"
+  }
 }

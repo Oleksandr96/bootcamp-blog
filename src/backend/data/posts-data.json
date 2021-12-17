@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Post title - Lorem ipsum dolor",
+    "author": "John Doe",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum repudiandae dolor esse est enim tempora commodi, labore delectus beatae cupiditate dolore repellat voluptatibus veniam magni ut maiores nulla facere animi?",
+    "date": "20-06-2021",
+    "likes": 5
+  },
+  {
+    "id": 2,
+    "title": "Labore delectus beatae cupiditate",
+    "author": "Foo Bar",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum repudiandae dolor esse est enim tempora commodi, labore delectus beatae cupiditate dolore repellat voluptatibus veniam magni ut maiores nulla facere animi?",
+    "date": "20-06-2021",
+    "likes": 1
+  }
+]

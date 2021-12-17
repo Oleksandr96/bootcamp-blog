@@ -1,8 +1,11 @@
 const express = require("express");
-const controller = require("../controllers/auth");
+const controller = require("../controllers/posts-list");
 
 const router = express.Router();
 
-router.post("/posts", controller.getAll);
+router.get("/posts", controller.getAll);
+router.get("*", (req, res) => {
+  res.status(404).send("404 - Not found");
+});
 
 module.exports = router;
