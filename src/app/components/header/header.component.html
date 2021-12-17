@@ -1,12 +1,23 @@
-<header>
+<mat-toolbar>
   <div class="header-title">
     <h1>My Blog</h1>
   </div>
   <nav class="menu">
-    <a class="menu__item menu__item--active" href="#">Home</a>
-    <a class="menu__item" href="#" (click)="modal = true">
-      <i class="far fa-edit"></i> New Article</a>
-    <a class="menu__item" href="#">User Name</a>
+    <a mat-button
+       class="menu__item menu__item--active"
+       href="#">
+      <mat-icon>home</mat-icon>
+      Home</a>
+    <button mat-button
+            class="menu__item"
+            (click)="openDialog()">
+      <mat-icon>edit</mat-icon>
+      New Article
+    </button>
+    <a mat-button
+       class="menu__item"
+       href="#">
+      <mat-icon>perm_identity</mat-icon>
+      User Name</a>
   </nav>
-</header>
-<app-modal *ngIf="modal" (close)="modal=false"></app-modal>
+</mat-toolbar>
