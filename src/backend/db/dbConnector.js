@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 const conf = require("../config/conf");
 
-module.exports = () => {
-  mongoose
-    .connect(conf.mongoURI)
-    .then(() => console.log("DB connected"))
-    .catch((error) => console.log(error));
+module.exports = async () => {
+  try {
+    await mongoose.connect(conf.mongoURI);
+    console.log("DB connected");
+  } catch (err) {
+    console.error(err);
+  }
 };

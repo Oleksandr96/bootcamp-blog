@@ -10,6 +10,10 @@ const commentSchema = new Schema({
     type: String,
     required: true,
   },
+  postId: {
+    ref: "Post",
+    type: Schema.Types.ObjectId,
+  },
 });
 
-module.exports = mongoose.model("comments", commentSchema);
+module.exports = mongoose.model("Comment", commentSchema, "comments");

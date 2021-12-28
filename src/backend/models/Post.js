@@ -15,17 +15,16 @@ const postSchema = new Schema({
     required: true,
   },
   user: {
-    ref: "users",
-    type: Schema.Types.ObjectId,
-  },
-  category: {
-    ref: "categories",
+    ref: "User",
     type: Schema.Types.ObjectId,
   },
   tags: {
-    ref: "tags",
+    ref: "Tag",
     type: Schema.Types.ObjectId,
   },
-  likes: [String],
+  likes: {
+    type: Number,
+    default: 0,
+  },
 });
-module.exports = mongoose.model("posts", postSchema);
+module.exports = mongoose.model("Post", postSchema, "posts");

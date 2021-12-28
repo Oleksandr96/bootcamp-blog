@@ -6,4 +6,4 @@ const tagSchema = new Schema({
     type: String,
   },
 });
-module.exports = mongoose.model("tags", tagSchema);
+module.exports = mongoose.model("Tag", tagSchema, "tags");
