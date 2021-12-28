@@ -7,10 +7,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BlogComponent } from './blog.component';
 
 import { MaterialModule } from '../shared/material/material.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [PostComponent, SidebarComponent, BlogComponent],
-  imports: [FormsModule, ReactiveFormsModule, BrowserModule, MaterialModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserModule,
+    MaterialModule,
+    RouterModule,
+  ],
   providers: [AppPostsService],
   exports: [BlogComponent],
 })

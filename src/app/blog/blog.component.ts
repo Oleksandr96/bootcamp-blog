@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppPostsService } from '../services/app-posts.service';
 import { Post } from '../interfaces/post.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'blog-page',
@@ -8,9 +9,11 @@ import { Post } from '../interfaces/post.interface';
   styleUrls: ['blog.component.scss'],
 })
 export class BlogComponent {
-  posts: Post[] = [];
+  posts!: Observable<Post[]>;
 
-  constructor(private appPostsService: AppPostsService) {
+  constructor(private appPostsService: AppPostsService) {}
+
+  ngOnInit(): void {
     this.posts = this.appPostsService.getPosts();
   }
 }

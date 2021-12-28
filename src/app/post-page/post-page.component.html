@@ -1,0 +1,13 @@
+<mat-progress-bar *ngIf="!post" mode="indeterminate"></mat-progress-bar>
+<div *ngIf="post" class="post">
+  <h2 class="post__title">{{post.title}}</h2>
+  <div class="meta">
+    <div class="post__author">
+      <p class="post__author-name">{{post.user.name}}</p>
+      <p class="post__date">{{post.date | date : 'longDate'}}</p>
+    </div>
+  </div>
+
+  <p class="post__content">{{post.content}}</p>
+
+</div>
