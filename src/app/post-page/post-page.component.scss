@@ -1,0 +1,22 @@
+.post {
+  mat-card-title {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  mat-card-subtitle {
+    margin-bottom: 1rem;
+  }
+
+  mat-card-content {
+    text-align: justify;
+  }
+
+  &__meta {
+    &--subtitle {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+}
+

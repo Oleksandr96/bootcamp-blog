@@ -1,13 +1,16 @@
 <mat-progress-bar *ngIf="!post" mode="indeterminate"></mat-progress-bar>
-<div *ngIf="post" class="post">
-  <h2 class="post__title">{{post.title}}</h2>
-  <div class="meta">
-    <div class="post__author">
-      <p class="post__author-name">{{post.user.name}}</p>
-      <p class="post__date">{{post.date | date : 'longDate'}}</p>
-    </div>
-  </div>
+<mat-card *ngIf="post" class="post">
+  <mat-card-title class="post__title">{{post.title}}</mat-card-title>
 
-  <p class="post__content">{{post.content}}</p>
+  <mat-card-subtitle class="post__subtitle">
+    <p class="post__subtitle--meta">Post by <b>{{post.user.name}}</b> | {{post.date | date : 'longDate'}}</p>
+    <mat-chip-list aria-label="Tags">
+      <mat-chip>Tag 1</mat-chip>
+      <mat-chip>Tag 2</mat-chip>
+    </mat-chip-list>
+  </mat-card-subtitle>
 
-</div>
+  <mat-card-content class="post__content">{{post.content}}</mat-card-content>
+
+</mat-card>
+
