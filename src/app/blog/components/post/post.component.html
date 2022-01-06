@@ -10,5 +10,5 @@
   </div>
   <h2 class="post__title">{{post.title}}</h2>
   <p class="post__content">{{post.content}}</p>
-  <a class="post__read-more" routerLink="/posts/{{post._id}}">Read more...</a>
+  <a class="post__read-more" [routerLink]="['posts', post._id]">Read more...</a>
 </mat-card>
