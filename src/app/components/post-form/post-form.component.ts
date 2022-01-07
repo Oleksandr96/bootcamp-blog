@@ -50,7 +50,7 @@ export class PostFormComponent implements OnInit {
   submit(): void {
     if (this.newPostForm.valid) {
       const post: Post = this.newPostForm.value;
-      this.appPostsService.updatePosts(post);
+      this.appPostsService.create(post);
       this.newPostForm.reset();
       this.dialogRef.close();
     }
@@ -84,7 +84,10 @@ export class PostFormComponent implements OnInit {
         Validators.required,
         Validators.minLength(5),
       ]),
-      text: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      content: new FormControl('', [
+        Validators.required,
+        Validators.minLength(5),
+      ]),
     });
 
     this.newPostForm.valueChanges.subscribe((x) => this.onFormChange());

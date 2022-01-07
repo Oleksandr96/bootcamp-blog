@@ -1,36 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../interfaces/post.interface';
+import { HttpClient } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppPostsService {
-  posts: Post[] = [
-    {
-      id: 1,
-      title: 'Post title - Lorem ipsum dolor',
-      author: 'John Doe',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum repudiandae dolor esse est enim tempora commodi, labore delectus beatae cupiditate dolore repellat voluptatibus veniam magni ut maiores nulla facere animi?',
-      date: new Date(),
-      likes: 5,
-    },
-    {
-      id: 2,
-      title: 'Labore delectus beatae cupiditate',
-      author: 'Foo Bar',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum repudiandae dolor esse est enim tempora commodi, labore delectus beatae cupiditate dolore repellat voluptatibus veniam magni ut maiores nulla facere animi?',
-      date: new Date(),
-      likes: 1,
-    },
-  ];
+  API_URL: string = environment.apiUrl;
 
-  updatePosts(post: Post) {
-    post.date = new Date();
-    post.likes = 0;
-    this.posts.unshift(post);
+  constructor(private http: HttpClient) {}
+
+  public create(post: Post): any {
+    return this.http.post<Post>(`${this.API_URL}/posts/`, post);
   }
 
-  getPosts() {
-    return this.posts;
+  public getAll(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.API_URL}/posts`);
+  }
+
+  public getById(id: string | null): Observable<Post> {
+    return this.http.get<Post>(`${this.API_URL}/posts/${id}`);
   }
 }
