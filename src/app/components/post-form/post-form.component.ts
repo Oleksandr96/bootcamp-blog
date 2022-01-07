@@ -50,7 +50,7 @@ export class PostFormComponent implements OnInit {
   submit(): void {
     if (this.newPostForm.valid) {
       const post: Post = this.newPostForm.value;
-      this.appPostsService.addPost(post);
+      this.appPostsService.create(post);
       this.newPostForm.reset();
       this.dialogRef.close();
     }

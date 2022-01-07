@@ -3,7 +3,8 @@
   <mat-card-title class="post__title">{{post.title}}</mat-card-title>
 
   <mat-card-subtitle class="post__subtitle">
-    <p class="post__subtitle--meta">Post by <b>{{post.user.name}}</b> | {{post.date | date : 'longDate'}}</p>
+    <p class="post__subtitle--meta">Post by <b>{{post.user.firstName}} {{post.user.lastName}}</b>
+      | {{post.date | date : 'longDate'}}</p>`
     <mat-chip-list aria-label="Tags">
       <mat-chip>Tag 1</mat-chip>
       <mat-chip>Tag 2</mat-chip>

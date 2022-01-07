@@ -2,11 +2,11 @@
   <div class="meta">
     <img alt="user_img" class="post__author-img" src="../../../../assets/user.png">
     <div class="post__author">
-      <p class="post__author-name">{{post.user?.name}}</p>
+      <p class="post__author-name">{{post.user.firstName}} {{post.user.lastName}}</p>
       <p class="post__date">{{post.date | date : 'longDate'}}</p>
     </div>
 
-    <button mat-stroked-button color="accent"><mat-icon>favorite</mat-icon> {{post.likes}}</button>
+    <button mat-stroked-button color="accent"><mat-icon>favorite</mat-icon> {{post.likesCount}}</button>
   </div>
   <h2 class="post__title">{{post.title}}</h2>
   <p class="post__content">{{post.content}}</p>

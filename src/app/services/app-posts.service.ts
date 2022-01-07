@@ -1,21 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../interfaces/post.interface';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppPostsService {
+  API_URL: string = environment.apiUrl;
+
   constructor(private http: HttpClient) {}
 
-  public addPost(post: Post): any {
-    this.http
-      .post<Post>('http://localhost:3000/api/posts/', post)
-      .subscribe((data) => console.log(data));
+  public create(post: Post): any {
+    return this.http.post<Post>(`${this.API_URL}/posts/`, post);
   }
 
-  public getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>('http://localhost:3000/api/posts');
+  public getAll(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.API_URL}/posts`);
+  }
+
+  public getById(id: string | null): Observable<Post> {
+    return this.http.get<Post>(`${this.API_URL}/posts/${id}`);
   }
 }

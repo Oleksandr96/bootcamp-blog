@@ -14,6 +14,6 @@ export class BlogComponent {
   constructor(private appPostsService: AppPostsService) {}
 
   ngOnInit(): void {
-    this.posts = this.appPostsService.getPosts();
+    this.posts = this.appPostsService.getAll();
   }
 }
