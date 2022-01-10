@@ -10,6 +10,10 @@ const postSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
+  shortDescription: {
+    type: String,
+    required: true,
+  },
   content: {
     type: String,
     required: true,
@@ -18,13 +22,21 @@ const postSchema = new Schema({
     ref: "User",
     type: Schema.Types.ObjectId,
   },
-  tags: {
-    ref: "Tag",
-    type: Schema.Types.ObjectId,
-  },
-  likes: {
+  tags: [
+    {
+      ref: "Tag",
+      type: Schema.Types.ObjectId,
+    },
+  ],
+  likesCount: {
     type: Number,
     default: 0,
   },
+  likedBy: [
+    {
+      ref: "User",
+      type: Schema.Types.ObjectId,
+    },
+  ],
 });
 module.exports = mongoose.model("Post", postSchema, "posts");
