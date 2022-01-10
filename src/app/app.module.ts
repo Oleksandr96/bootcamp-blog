@@ -8,9 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { PostPageComponent } from './post-page/post-page.component';
+import { PostPageComponent } from './blog/post-page/post-page.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { RouterModule } from '@angular/router';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     PostFormComponent,
     PostPageComponent,
+    NotFoundComponent,
   ],
   entryComponents: [PostFormComponent],
   imports: [

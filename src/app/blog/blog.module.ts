@@ -4,7 +4,7 @@ import { AppPostsService } from '../services/app-posts.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { BlogComponent } from './blog.component';
+import { BlogComponent } from './feed-page/blog.component';
 
 import { MaterialModule } from '../shared/material/material.module';
 import { RouterModule } from '@angular/router';
