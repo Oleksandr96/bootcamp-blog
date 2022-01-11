@@ -1,3 +1,5 @@
+import { Tag } from './tag.interface';
+
 export interface Post {
   _id?: string;
   title: string;
@@ -7,9 +9,7 @@ export interface Post {
     lastName: string;
     avatarSrc: string;
   };
-  tags: {
-    _id: string;
-  };
+  tags: Tag[];
   content: string;
   shortDescription: string;
   date: Date;

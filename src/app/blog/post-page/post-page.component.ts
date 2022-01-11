@@ -26,7 +26,5 @@ export class PostPageComponent {
 
   ngOnInit(): void {
     this.getPost();
-
-    console.log(this.post);
   }
 }

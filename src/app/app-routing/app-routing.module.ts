@@ -6,8 +6,8 @@ import { BlogComponent } from '../blog/feed-page/blog.component';
 import { NotFoundComponent } from '../components/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', component: BlogComponent },
-  { path: 'posts', component: BlogComponent },
+  { path: 'feed', component: BlogComponent },
+  { path: '', redirectTo: '/feed', pathMatch: 'full' },
 
   { path: 'posts/:id', component: PostPageComponent },
   { path: '**', component: NotFoundComponent },
