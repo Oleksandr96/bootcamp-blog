@@ -1,4 +1,9 @@
 <mat-card class="tags">
-  <strong>Popular Tags</strong><br>
-  <strong>No tags are here... </strong>
+  <h3>Popular Tags</h3>
+  <mat-chip-list aria-label="Tags">
+    <mat-chip *ngFor="let tag of tags"
+              [routerLink]="[]"
+              [queryParams]="{tag: tag._id}">
+      {{tag.name}} <small>({{tag.count}})</small></mat-chip>
+  </mat-chip-list>
 </mat-card>
