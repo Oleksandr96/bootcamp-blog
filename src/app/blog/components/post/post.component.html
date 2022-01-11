@@ -1,14 +1,18 @@
 <mat-card *ngIf="post" class="post">
   <div class="meta">
-    <img alt="user_img" class="post__author-img" src="../../../../assets/user.png">
+    <img alt="user_img" class="post__author-img" src="{{post.user.avatarSrc}}">
     <div class="post__author">
-      <p class="post__author-name">{{post.user.firstName}} {{post.user.lastName}}</p>
+      <a class="post__author-name"
+         [routerLink]="['posts']"
+         [queryParams]="{author: post.user._id}">{{post.user.firstName}} {{post.user.lastName}}</a>
       <p class="post__date">{{post.date | date : 'longDate'}}</p>
     </div>
 
-    <button mat-stroked-button color="accent"><mat-icon>favorite</mat-icon> {{post.likesCount}}</button>
+    <button mat-stroked-button color="accent" (click)="like(post._id!)">
+      <mat-icon>favorite</mat-icon>
+      {{post.likesCount}}</button>
   </div>
   <h2 class="post__title">{{post.title}}</h2>
-  <p class="post__content">{{post.content}}</p>
+  <p class="post__content">{{post.shortDescription}}</p>
   <a class="post__read-more" [routerLink]="['posts', post._id]">Read more...</a>
 </mat-card>
