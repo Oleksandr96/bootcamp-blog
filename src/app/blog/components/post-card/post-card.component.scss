@@ -9,29 +9,10 @@
   .meta {
     display: flex;
     align-content: space-between;
-    margin-top: 1rem;
-
-    .like-btn {
-      padding: 0 15px;
-      margin-left: auto;
-      height: 40px;
-      border: 1px solid $green;
-      border-radius: 10px;
-      color: $green;
-      background-color: $white;
-      cursor: pointer;
-      transition: 0.5s;
-
-      &--liked, &:hover {
-        color: $white;
-        background-color: $green-light;
-        transition: 0.5s;
-      }
-    }
   }
 
   &__author {
-    width: 80%;
+    width: 90%;
   }
 
   &__author-img {
