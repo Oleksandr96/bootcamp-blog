@@ -25,11 +25,21 @@ export class RegistrationPageComponent implements OnInit {
   loggedIn: boolean = false;
 
   validationMessages: any = {
+    firstName: {
+      required: 'Field required',
+      minlength: 'The minimum field length is 3 characters.',
+    },
+    lastName: {
+      required: 'Field required',
+      minlength: 'The minimum field length is 3 characters.',
+    },
     email: {
       required: 'Field required',
+      email: 'Wrong e-mail address',
     },
     password: {
       required: 'Field required',
+      minlength: 'The minimum field length is 8 characters.',
     },
   };
 
@@ -52,19 +62,26 @@ export class RegistrationPageComponent implements OnInit {
     if (this.loggedIn) this.router.navigate(['/feed']);
 
     this.registerForm = new FormGroup({
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
+      firstName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      lastName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
     });
-    this.registerForm.valueChanges.subscribe(
-      (x) =>
-        this.appValidationService.onFormChange(
-          this.registerForm,
-          this.registerForm,
-          this.validationMessages
-        ),
-      (error) => this.registerForm.enable()
+    this.registerForm.valueChanges.subscribe((x) =>
+      this.appValidationService.onFormChange(
+        this.registerForm,
+        this.registerFormErrors,
+        this.validationMessages
+      )
     );
   }
 
@@ -77,8 +94,6 @@ export class RegistrationPageComponent implements OnInit {
         .subscribe((data: User) => {
           console.log(data);
         });
-
-      //this.authForm.reset();
     }
   }
 }
