@@ -1,7 +1,7 @@
 <section class="wrapper">
   <div class="posts-list" *ngIf="posts.length > 0; else empty">
     <h2>{{pageTitle}}</h2>
-    <app-post *ngFor="let p of (posts)" [post]="p"></app-post>
+    <app-post-card *ngFor="let p of (posts)" [post]="p"></app-post-card>
 
     <div class="loader" *ngIf="!noMoreOrders">
       <ng-template #spinner>

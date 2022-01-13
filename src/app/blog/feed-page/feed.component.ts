@@ -7,20 +7,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppTagsService } from '../../services/app-tags.service';
 import { User } from '../../interfaces/user.interface';
 
-const STEP: number = 1;
+const STEP: number = 2;
 
 @Component({
-  selector: 'blog-page',
-  templateUrl: 'blog.component.html',
-  styleUrls: ['blog.component.scss'],
+  selector: 'feed-page',
+  templateUrl: 'feed.component.html',
+  styleUrls: ['feed.component.scss'],
 })
-export class BlogComponent implements OnInit, OnDestroy {
+export class FeedComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   pSub!: Subscription;
   tSub!: Subscription;
 
   offset: number = 0;
-  limit: number = 1;
+  limit: number = 2;
 
   authorId!: string;
   tagId!: string;
@@ -36,8 +36,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private appPostsService: AppPostsService,
-    private appTagsService: AppTagsService
+    private appPostsService: AppPostsService
   ) {}
 
   ngOnInit(): void {
