@@ -48,8 +48,8 @@
         <mat-label>Text</mat-label>
         <textarea matInput
                   formControlName="content"
-                  id="text"
-                  name="text"></textarea>
+                  id="content"
+                  name="content"></textarea>
       </mat-form-field>
 
       <div
@@ -58,7 +58,6 @@
         <span>{{newPostFormErrors.text}}</span>
 
       </div>
-
     </div>
 
     <button mat-button (click)="dialogClose()">Cancel</button>

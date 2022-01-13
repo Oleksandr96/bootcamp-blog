@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import {
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
-import { AppPostsService } from '../../services/app-posts.service';
-import { Post } from '../../interfaces/post.interface';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AppPostsService } from '../../../services/app-posts.service';
+import { Post } from '../../../interfaces/post.interface';
+import { AppValidationService } from '../../../services/app-validation.service';
 
 @Component({
   selector: 'app-modal',
@@ -19,7 +15,7 @@ export class PostFormComponent implements OnInit {
   newPostFormErrors: any = {
     author: null,
     title: null,
-    text: null,
+    content: null,
   };
 
   validationMessages: any = {
@@ -31,7 +27,7 @@ export class PostFormComponent implements OnInit {
       required: 'Field required',
       minlength: 'The minimum field length is 5 characters.',
     },
-    text: {
+    content: {
       required: 'Field required',
       minlength: 'The minimum field length is 5 characters.',
     },
@@ -39,7 +35,8 @@ export class PostFormComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<PostFormComponent>,
-    private appPostsService: AppPostsService
+    private appPostsService: AppPostsService,
+    private appValidationService: AppValidationService
   ) {}
 
   dialogClose() {
@@ -54,24 +51,6 @@ export class PostFormComponent implements OnInit {
       this.newPostForm.reset();
       this.dialogRef.close();
     }
-  }
-
-  onFormChange() {
-    if (this.newPostForm.valid) {
-      this.newPostFormErrors = [];
-      return;
-    }
-    const form = this.newPostForm;
-    Object.keys(form.controls).forEach((formField) => {
-      this.newPostFormErrors[formField] = '';
-      const controlErrors: ValidationErrors = form.get(formField)!.errors!;
-      if (controlErrors && form.get(formField)?.dirty) {
-        Object.keys(controlErrors).forEach((keyError) => {
-          this.newPostFormErrors[formField] =
-            this.validationMessages[formField][keyError];
-        });
-      }
-    });
   }
 
   ngOnInit(): void {
@@ -90,6 +69,12 @@ export class PostFormComponent implements OnInit {
       ]),
     });
 
-    this.newPostForm.valueChanges.subscribe((x) => this.onFormChange());
+    this.newPostForm.valueChanges.subscribe((x) =>
+      this.appValidationService.onFormChange(
+        this.newPostForm,
+        this.newPostFormErrors,
+        this.validationMessages
+      )
+    );
   }
 }
