@@ -1,0 +1,37 @@
+<mat-toolbar>
+  <div class="header-title">
+    <h1 routerLink="/">My Blog</h1>
+  </div>
+  <nav class="menu">
+    <a mat-button
+       class="menu__item"
+       routerLink="/feed"
+       routerLinkActive="menu__item--active">
+      <mat-icon>home</mat-icon>
+      Home</a>
+    <span *ngIf="loggedIn; else guest">
+      <button mat-button
+              class="menu__item"
+              (click)="openPostDialog()">
+        <mat-icon>edit</mat-icon>
+        New Article
+      </button>
+       <a mat-button
+          class="menu__item"
+          routerLink="/account"
+          routerLinkActive="menu__item--active">
+        <mat-icon>account_circle</mat-icon>
+        My Profile</a>
+      <a mat-button class="menu__item" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        Logout</a>
+    </span>
+    <ng-template #guest>
+      <a mat-button
+         class="menu__item"
+         (click)="openAuthDialog()">
+        Login</a>
+    </ng-template>
+
+  </nav>
+</mat-toolbar>

@@ -12,5 +12,26 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: $whitesmoke;
+  //background-color: $whitesmoke;
+  background-color: $white;
+
+}
+
+.validation {
+  color: $red;
+  font-size: 12px;
+  position: relative;
+  top: -20px;
+
+  span {
+    position: absolute;
+  }
+}
+.text-right{
+  text-align: right;
+}
+mat-divider{
+  left: 1rem;
+  right: 1rem;
+  width: unset;
 }

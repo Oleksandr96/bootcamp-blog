@@ -9,7 +9,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDividerModule } from '@angular/material/divider';
 
 const materialModules = [
   MatDialogModule,
@@ -22,7 +23,8 @@ const materialModules = [
   MatProgressBarModule,
   MatChipsModule,
   MatProgressSpinnerModule,
-  MatTabsModule,
+  MatSnackBarModule,
+  MatDividerModule,
 ];
 
 @NgModule({
