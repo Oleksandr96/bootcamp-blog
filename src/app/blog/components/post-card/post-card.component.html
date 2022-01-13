@@ -1,6 +1,6 @@
 <mat-card *ngIf="post" class="post">
   <div class="meta">
-    <img alt="user_img" class="post__author-img" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png">
+    <img alt="user_img" class="post__author-img" src="{{post.user.avatarSrc}}">
     <div class="post__author">
       <a class="post__author-name"
          [routerLink]="[]"

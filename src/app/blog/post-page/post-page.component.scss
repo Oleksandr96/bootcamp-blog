@@ -11,6 +11,11 @@
   mat-card-content {
     text-align: justify;
   }
+  mat-divider{
+    left: 1rem;
+    right: 1rem;
+    width: unset;
+  }
 
   &__meta {
     &--subtitle {

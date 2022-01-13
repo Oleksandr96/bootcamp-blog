@@ -1,0 +1,30 @@
+@import "./../../../../styles/_variables.scss";
+
+.comment {
+  display: flex;
+  padding: 1rem 0 0;
+
+  &__avatar {
+    margin-right: 1rem;
+
+    img {
+      border-radius: 50%;
+      width: 5rem;
+    }
+  }
+
+  &__author {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  &__content {
+    text-align: justify;
+  }
+
+  &__date {
+    text-align: right;
+    color: $dark-grey;
+    margin: 0;
+  }
+}

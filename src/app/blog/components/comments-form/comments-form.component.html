@@ -1,0 +1,33 @@
+<div class="comments-form">
+  <h3 class="comments-form__title">Leave a comment</h3>
+
+  <form [formGroup]="commentForm"
+        (ngSubmit)="submit()"
+        class="form">
+
+    <div class="form__item">
+      <mat-form-field class="textarea"
+                      appearance="fill">
+        <mat-label>Text</mat-label>
+        <textarea matInput
+                  formControlName="content"
+                  id="content"
+                  name="content"></textarea>
+      </mat-form-field>
+      <div
+        *ngIf="commentFormErrors.text"
+        class="validation">
+        <span>{{commentFormErrors.text}}</span>
+      </div>
+
+    </div>
+    <div class="text-right">
+      <button mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="commentForm.invalid || commentForm.disabled">Send
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>
