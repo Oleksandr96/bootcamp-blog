@@ -43,12 +43,17 @@ module.exports.getAll = async (req, res) => {
 module.exports.create = async (req, res) => {
   try {
     const { title, content, shortDescription } = req.body;
+    let token = req.headers.authorization;
+    if (!token) return res.status(401).json({ message: "Unauthorized" });
+
+    token = JSON.parse(atob(token.split(".")[1]));
+    const userId = token.userId;
 
     const post = await PostModel.create({
       title,
       content,
       shortDescription,
-      user: req.user.id,
+      user: userId,
       tags: "61d54c47c5ad2458e3e0526a",
     });
 
@@ -72,7 +77,13 @@ module.exports.getById = async (req, res) => {
 
 module.exports.remove = async (req, res) => {
   try {
-    await PostModel.remove({ _id: req.params.id });
+    let token = req.headers.authorization;
+    if (!token) return res.status(401).json({ message: "Unauthorized" });
+
+    token = JSON.parse(atob(token.split(".")[1]));
+    const userId = token.userId;
+
+    await PostModel.remove({ _id: req.params.id, user: userId });
     res.status(200).json({ message: "Post removed." });
   } catch (e) {
     errorHandler(res, e);
@@ -81,8 +92,14 @@ module.exports.remove = async (req, res) => {
 
 module.exports.update = async (req, res) => {
   try {
+    let token = req.headers.authorization;
+    if (!token) return res.status(401).json({ message: "Unauthorized" });
+
+    token = JSON.parse(atob(token.split(".")[1]));
+    const userId = token.userId;
+
     const post = await PostModel.findByIdAndUpdate(
-      { _id: req.params.id },
+      { _id: req.params.id, user: userId },
       {
         title: req.body.title,
         content: req.body.content,
@@ -97,11 +114,16 @@ module.exports.update = async (req, res) => {
 
 module.exports.like = async (req, res) => {
   try {
+    let token = req.headers.authorization;
+    if (!token) return res.status(401).json({ message: "Unauthorized" });
+
+    token = JSON.parse(atob(token.split(".")[1]));
+    const userId = token.userId;
+
     const post = await PostModel.findById(
       { _id: req.body.id },
       { likedBy: 1, likesCount: 1 }
     );
-    const userId = req.user.id;
     const isLiked = post.likedBy.indexOf(userId);
     let likesData = {};
 

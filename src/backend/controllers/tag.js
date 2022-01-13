@@ -90,7 +90,7 @@ module.exports.getPopular = async (req, res) => {
       {
         $project: { _id: 1, name: { $first: "$tag.name" }, count: 1 },
       },
-      { $sort: { count: -1 } },
+      { $sort: { count: -1, name: 1 } },
       { $limit: 10 },
     ]);
     res.status(200).send(tags);

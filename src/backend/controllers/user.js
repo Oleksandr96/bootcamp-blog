@@ -12,7 +12,6 @@ module.exports.login = async (req, res) => {
         req.body.password,
         candidate.password
       );
-      console.log(passwordResult);
       if (passwordResult) {
         const token = jwt.sign(
           {
@@ -24,9 +23,6 @@ module.exports.login = async (req, res) => {
         );
         res.status(200).json({
           token: `Bearer ${token}`,
-        });
-        res.status(200).json({
-          message: `Welcome, user: ${candidate._id}`,
         });
       } else {
         res.status(401).json({

@@ -5,10 +5,12 @@ const CommentModel = require("../models/Post");
 module.exports.create = async (req, res) => {
   try {
     const { content, postId } = req.body;
+    const token = JSON.parse(atob(req.headers.authorization.split(".")[1]));
+    const userId = token.userId;
     const comment = await CommentModel.create({
       postId,
       content,
-      user: req.user.id,
+      user: userId,
     });
     res.status(200).json(comment);
   } catch (e) {
@@ -35,8 +37,10 @@ module.exports.getByPostId = async (req, res) => {
 module.exports.update = async (req, res) => {
   try {
     const { content } = req.body;
+    const token = JSON.parse(atob(req.headers.authorization.split(".")[1]));
+    const userId = token.userId;
     const comment = await CommentModel.updateOne(
-      { _id: req.body.id, user: req.user.id },
+      { _id: req.body.id, user: userId },
       {
         content,
         edited: true,
