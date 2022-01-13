@@ -142,7 +142,10 @@ module.exports.like = async (req, res) => {
       { _id: req.body.id },
       likesData,
       { new: true }
-    ).populate({ path: "user", select: ["firstName", "lastName"] });
+    ).populate({
+      path: "user",
+      select: ["firstName", "lastName", "avatarSrc"],
+    });
 
     return res.status(200).send(updatedPost);
   } catch (e) {
