@@ -4,4 +4,10 @@
   color: $black;
   padding: 1rem;
   min-height: 30vh;
+
+  .active {
+    background-color: $green;
+    color: $white;
+  }
 }
+
