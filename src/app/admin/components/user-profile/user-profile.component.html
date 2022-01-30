@@ -1,0 +1,124 @@
+<mat-card>
+
+  <mat-card-title *ngIf="user">{{user.firstName}} {{user.lastName}}
+    <button
+      mat-raised-button
+      (click)="toggleForm()">
+      Edit Profile
+    </button>
+  </mat-card-title>
+
+  <mat-card-content class="profile">
+    <form [formGroup]="profileForm"
+          (ngSubmit)="submit()"
+          class="form">
+
+      <div class="form__item">
+        <mat-form-field class="input"
+                        appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput
+                 placeholder="First Name"
+                 type="text"
+                 id="firstName"
+                 name="firstName"
+                 formControlName="firstName">
+        </mat-form-field>
+
+        <div *ngIf="profileFormErrors.firstName"
+             class="validation">
+          <span>{{profileFormErrors.firstName}}</span>
+        </div>
+      </div>
+
+      <div class="form__item">
+        <mat-form-field class="input"
+                        appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput
+                 placeholdWer="Last Name"
+                 type="text"
+                 id="lastName"
+                 name="lastName"
+                 formControlName="lastName">
+        </mat-form-field>
+
+        <div *ngIf="profileFormErrors.lastName"
+             class="validation">
+          <span>{{profileFormErrors.lastName}}</span>
+        </div>
+      </div>
+
+      <div class="form__item">
+        <mat-form-field class="input"
+                        appearance="fill">
+          <mat-label>About me</mat-label>
+          <textarea matInput
+                    placeholdWer="About me"
+                    id="bio"
+                    name="bio"
+                    formControlName="bio"></textarea>
+        </mat-form-field>
+        <div *ngIf="profileFormErrors.bio"
+             class="validation">
+          <span>{{profileFormErrors.bio}}</span>
+        </div>
+      </div>
+
+      <div class="form__item">
+        <mat-form-field class="input"
+                        appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput
+                 placeholdWer="Email"
+                 type="email"
+                 id="email"
+                 name="email"
+                 formControlName="email">
+        </mat-form-field>
+
+        <div *ngIf="profileFormErrors.email"
+             class="validation">
+          <span>{{profileFormErrors.email}}</span>
+        </div>
+      </div>
+
+      <div class="form__item">
+        <mat-form-field class="input"
+                        appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput
+                 [type]="passwordHide ? 'password' : 'text'"
+                 placeholder="Password"
+                 type="password"
+                 id="password"
+                 name="password"
+                 formControlName="password">
+          <button mat-icon-button
+                  matSuffix
+                  (click)="passwordHide = !passwordHide"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="passwordHide">
+            <mat-icon>{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+
+        <div *ngIf="profileFormErrors.password"
+             class="validation">
+          <span>{{profileFormErrors.password}}</span>
+
+        </div>
+      </div>
+
+      <button mat-raised-button
+              color="primary"
+              type="submit"
+              cdkFocusInitial
+              [disabled]="profileForm.invalid || profileForm.disabled">Save Changes
+      </button>
+
+    </form>
+
+  </mat-card-content>
+</mat-card>

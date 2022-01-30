@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-title>Liked Posts</mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <mat-list *ngIf="likedPosts?.length; else empty">
+      <mat-list-item *ngFor="let post of likedPosts">
+        <a [routerLink]="['/../../posts/', post._id]" mat-line>{{post.title}}</a>
+        <mat-icon (click)="unlike(post._id!)" color="primary">delete</mat-icon>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+    <ng-template #empty>
+      <div class="warning">The list is empty</div>
+    </ng-template>
+  </mat-card-content>
+
+</mat-card>

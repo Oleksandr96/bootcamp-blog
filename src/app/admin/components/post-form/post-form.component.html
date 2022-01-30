@@ -1,0 +1,54 @@
+<mat-card>
+  <mat-card-title>{{pageTitle}}</mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <form [formGroup]="postForm"
+          (ngSubmit)="savePost(false)"
+          class="new-post">
+
+      <div class="new-post__actions">
+        <button mat-raised-button
+                type="button"
+                (click)="savePost(true)">Save Draft
+          <mat-icon>archive</mat-icon>
+        </button>
+        <button mat-raised-button
+                color="primary"
+                type="submit">
+          Publish
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+
+      <mat-form-field class="new-post__title input"
+                      appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput
+               type="text"
+               id="title"
+               name="title"
+               placeholder="Title"
+               formControlName="title">
+      </mat-form-field>
+
+      <app-tags (newTagEvent)="updateTags($event)" [selectedTags]="postTags" ></app-tags>
+
+      <mat-form-field class="textarea"
+                      appearance="fill">
+        <mat-label>Short Description</mat-label>
+        <textarea matInput
+                  formControlName="shortDescription"
+                  id="shortDescription"
+                  name="shortDescription"></textarea>
+      </mat-form-field>
+
+      <angular-editor
+        [config]="config"
+        formControlName="content"
+        id="content"
+        name="content"></angular-editor>
+
+    </form>
+  </mat-card-content>
+
+</mat-card>

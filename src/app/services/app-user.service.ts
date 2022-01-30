@@ -7,7 +7,7 @@ import { User } from '../interfaces/user.interface';
 @Injectable({
   providedIn: 'root',
 })
-export class AppAuthService {
+export class AppUserService {
   API_URL: string = environment.apiURL;
   private token: string | null = null;
   private loggedIn: Subject<boolean> = new ReplaySubject<boolean>(1);
@@ -19,7 +19,7 @@ export class AppAuthService {
 
   public login(user: User): Observable<{ token: string }> {
     return this.http
-      .post<{ token: string }>(`${this.API_URL}/auth/login`, user)
+      .post<{ token: string }>(`${this.API_URL}/user/login`, user)
       .pipe(
         tap(({ token }) => {
           localStorage.setItem('auth-token', token);
@@ -29,8 +29,19 @@ export class AppAuthService {
       );
   }
 
-  public register(user: User): Observable<User> {
-    return this.http.post<User>(`${this.API_URL}/auth/register`, user);
+  public register(user: User): Observable<any> {
+    return this.http.post<User>(`${this.API_URL}/user/register`, user);
+  }
+
+  public getUserById(): Observable<User> {
+    return this.http.get<User>(`${this.API_URL}/user`);
+  }
+  public getAll(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.API_URL}/user/all`);
+  }
+
+  public update(user: any): Observable<any> {
+    return this.http.patch<any>(`${this.API_URL}/user/${user._id}`, user);
   }
 
   setToken(token: string | null): void {
@@ -39,6 +50,15 @@ export class AppAuthService {
 
   getToken(): string {
     return <string>this.token;
+  }
+
+  getTokenData(): any {
+    return JSON.parse(atob(this.getToken().split('.')[1]));
+  }
+
+  isAdmin(): boolean {
+    const token = this.getTokenData();
+    return token.isAdmin;
   }
 
   isAuthenticated(): Observable<boolean> {

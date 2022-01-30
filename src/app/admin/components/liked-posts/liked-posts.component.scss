@@ -1,0 +1,7 @@
+mat-icon{
+  cursor: pointer;
+  display: none;
+}
+mat-list-item:hover  mat-icon{
+  display: block;
+}

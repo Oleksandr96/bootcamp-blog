@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-card-title>Comments</mat-card-title>
+  <mat-card-content>
+    <mat-tab-group>
+      <mat-tab label="Waiting for moderation">
+        <mat-list *ngIf="comments?.length; else empty">
+          <mat-list-item *ngFor="let comment of comments">
+            <span mat-line>{{comment.content}}
+              <a title="View post"
+                 target="_blank"
+                 [routerLink]="['/../../posts/', comment.postId]">
+                <mat-icon>open_in_new</mat-icon>
+              </a>
+            </span>
+
+            <button mat-raised-button
+                    (click)="remove(comment._id)">
+              <mat-icon color="warn">delete</mat-icon>
+            </button>
+
+            <button mat-raised-button
+                    class="btn-group"
+                    (click)="approve(comment)">
+              <mat-icon color="primary">done</mat-icon>
+            </button>
+
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
+        <ng-template #empty>
+          <div class="warning">The list is empty</div>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

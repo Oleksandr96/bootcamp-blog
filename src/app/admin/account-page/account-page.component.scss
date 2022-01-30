@@ -1,0 +1,44 @@
+@import "./../../../styles/_variables.scss";
+
+mat-sidenav {
+  width: 250px;
+  border: none;
+
+  .sidenav-container {
+    height: 90%;
+    background-color: $green;
+    color: $white;
+
+    .title {
+      text-align: center;
+      margin: 0;
+    }
+
+    .actions {
+      padding-top: 0.5rem;
+
+      &__button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 1rem;
+
+        mat-icon {
+          margin-right: 1rem;
+        }
+
+      }
+
+      &__button.active {
+        background-color: #3e8d41;
+      }
+    }
+  }
+}
+
+.content {
+  padding: 0 10px 0 10px;
+  background: $white;
+  min-height: 100vh;
+}

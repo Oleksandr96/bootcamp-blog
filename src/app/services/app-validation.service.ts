@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, ValidationErrors } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class AppValidationService {
   onFormChange(form: FormGroup, formErrors: any, validationMessages: any) {
     if (form.valid) {
       formErrors = [];
-      return;
+      return formErrors;
     }
     Object.keys(form.controls).forEach((formField) => {
       formErrors[formField] = '';
@@ -21,5 +22,6 @@ export class AppValidationService {
         });
       }
     });
+    return formErrors;
   }
 }
