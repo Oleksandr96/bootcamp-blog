@@ -6,6 +6,7 @@ export interface User {
   avatarSrc?: string;
   email: string;
   password: string;
+  isAdmin?: boolean;
 }
 
 export interface authUser {

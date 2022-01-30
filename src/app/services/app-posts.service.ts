@@ -12,8 +12,12 @@ export class AppPostsService {
 
   constructor(private http: HttpClient) {}
 
-  public create(post: Post): any {
+  public create(post: Post): Observable<any> {
     return this.http.post<Post>(`${this.API_URL}/posts/`, post);
+  }
+
+  public update(post: Post): Observable<any> {
+    return this.http.patch<Post>(`${this.API_URL}/posts/${post._id}`, post);
   }
 
   public fetch(params: any = {}): Observable<Post[]> {
@@ -28,9 +32,17 @@ export class AppPostsService {
     return this.http.get<Post>(`${this.API_URL}/posts/${id}`);
   }
 
+  public remove(id: string): Observable<any> {
+    return this.http.delete(`${this.API_URL}/posts/${id}`);
+  }
+
   public like(id: string): Observable<Post> {
     return this.http.patch<Post>(`${this.API_URL}/posts/like/${id}`, {
       id: id,
     });
+  }
+
+  public getLikedPosts(userId: string): Observable<any> {
+    return this.http.get<any>(`${this.API_URL}/posts/liked/${userId}`);
   }
 }

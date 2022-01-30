@@ -10,6 +10,7 @@ export interface Post {
     avatarSrc: string;
   };
   tags: Tag[];
+  isDraft: boolean;
   content: string;
   shortDescription: string;
   date: Date;
