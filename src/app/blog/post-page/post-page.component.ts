@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Post } from '../../interfaces/post.interface';
 import { Observable } from 'rxjs';
 import { AppPostsService } from '../../services/app-posts.service';
-import { AppAuthService } from '../../services/app-auth.service';
+import { AppUserService } from '../../services/app-user.service';
 
 @Component({
   selector: 'app-post-page',
@@ -17,7 +17,7 @@ export class PostPageComponent {
   constructor(
     private appPostsService: AppPostsService,
     private activatedRoute: ActivatedRoute,
-    private appAuthService: AppAuthService
+    private appAuthService: AppUserService
   ) {}
 
   getPost(): void {
