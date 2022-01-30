@@ -7,31 +7,37 @@ import {
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { AppAuthService } from '../../services/app-auth.service';
+import { AppUserService } from '../../services/app-user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-  constructor(private authService: AppAuthService, private router: Router) {}
+  constructor(private authService: AppUserService, private router: Router) {}
 
   loggedIn: boolean = false;
 
   canActivate(
-    route: ActivatedRouteSnapshot,
+    next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
+    return this.checkUserPermissions(next);
+  }
+
+  checkUserPermissions(route: ActivatedRouteSnapshot): Observable<boolean> {
     this.authService
       .isAuthenticated()
       .subscribe((loggedIn) => (this.loggedIn = loggedIn));
+
     if (this.loggedIn) {
+      const isAdmin = this.authService.isAdmin();
+      if (route.data['isAdmin'] && route.data['isAdmin'] != isAdmin) {
+        this.router.navigate(['/feed']);
+        return of(false);
+      }
       return of(true);
     } else {
-      this.router.navigate(['/feed'], {
-        queryParams: {
-          accessDenied: true,
-        },
-      });
+      this.router.navigate(['/feed']);
       return of(false);
     }
   }
@@ -40,6 +46,6 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    return of(true);
+    return this.canActivate(childRoute, state);
   }
 }

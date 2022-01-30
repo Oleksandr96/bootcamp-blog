@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
-import { AppAuthService } from '../../services/app-auth.service';
+import { AppUserService } from '../../services/app-user.service';
 import {
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
+  HttpSentEvent,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class AuthTokenInterceptor implements HttpInterceptor {
-  constructor(private authService: AppAuthService) {}
+  constructor(
+    private appUserService: AppUserService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   loggedIn: boolean = false;
 
@@ -18,16 +25,31 @@ export class AuthTokenInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    this.authService
+    this.appUserService
       .isAuthenticated()
-      .subscribe((loggedIn) => (this.loggedIn = loggedIn));
+      .subscribe((loggedIn: boolean) => (this.loggedIn = loggedIn));
     if (this.loggedIn) {
       req = req.clone({
         setHeaders: {
-          Authorization: this.authService.getToken(),
+          Authorization: this.appUserService.getToken(),
         },
       });
     }
-    return next.handle(req);
+    return next.handle(req).pipe(
+      catchError((err, caught: any) => {
+        if (err.status === 401) {
+          this.handleAuthError();
+          return of(err);
+        }
+        throw err;
+      })
+    );
+  }
+
+  private handleAuthError() {
+    this.appUserService.logout();
+    this.router
+      .navigate(['/feed'])
+      .then(() => this.snackBar.open('Session expired!', 'Ok'));
   }
 }
