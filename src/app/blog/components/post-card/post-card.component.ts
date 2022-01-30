@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../../../interfaces/post.interface';
 import { AppPostsService } from '../../../services/app-posts.service';
-import { AppAuthService } from '../../../services/app-auth.service';
+import { AppUserService } from '../../../services/app-user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -15,7 +15,7 @@ export class PostCardComponent implements OnInit {
 
   constructor(
     private appPostService: AppPostsService,
-    private authService: AppAuthService,
+    private authService: AppUserService,
     private snackBar: MatSnackBar
   ) {}
 

@@ -4,7 +4,6 @@ import { Post } from '../../interfaces/post.interface';
 import { Tag } from '../../interfaces/tag.interface';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AppTagsService } from '../../services/app-tags.service';
 import { User } from '../../interfaces/user.interface';
 
 const STEP: number = 2;
