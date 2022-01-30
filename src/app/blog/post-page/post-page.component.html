@@ -14,7 +14,18 @@
     </mat-chip-list>
   </mat-card-subtitle>
 
-  <mat-card-content class="post__content">{{post.content}}</mat-card-content>
+  <mat-card-content class="post__content" [innerHTML]="post.content"></mat-card-content>
+  <mat-divider></mat-divider>
+  <section class="comments">
+    <h2 class="comments__title">Comments</h2>
+    <app-comments-list></app-comments-list>
+
+    <app-comments-form *ngIf="loggedIn; else unavailable"></app-comments-form>
+    <ng-template #unavailable><h3><b>Only registered users can leave comments...</b></h3></ng-template>
+  </section>
 
 </mat-card>
+
+
+
 

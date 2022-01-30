@@ -3,7 +3,8 @@
   <mat-chip-list aria-label="Tags">
     <mat-chip *ngFor="let tag of tags"
               [routerLink]="[]"
-              [queryParams]="{tag: tag._id}">
+              [queryParams]="{tag: tag._id}"
+              routerLinkActive="active">
       {{tag.name}} <small>({{tag.count}})</small></mat-chip>
   </mat-chip-list>
 </mat-card>

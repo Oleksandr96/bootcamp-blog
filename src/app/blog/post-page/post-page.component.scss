@@ -11,10 +11,21 @@
   mat-card-content {
     text-align: justify;
   }
+  mat-divider{
+    left: 1rem;
+    right: 1rem;
+    width: unset;
+  }
 
   &__meta {
     &--subtitle {
       margin-bottom: 0.5rem;
+    }
+  }
+  .comments{
+    padding-top: 1rem;
+    &__title{
+      font-size: 1.5rem;
     }
   }
 

@@ -12,7 +12,7 @@ export class AppTagsService {
 
   constructor(private http: HttpClient) {}
 
-  public create(tag: Tag): any {
+  public create(tag: Tag): Observable<Tag> {
     return this.http.post<Tag>(`${this.API_URL}/tags/`, tag);
   }
 

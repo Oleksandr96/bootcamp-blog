@@ -1,0 +1,20 @@
+<article *ngIf="comments?.length; else noComments">
+  <div class="comment" *ngFor="let comment of (comments)">
+    <div class="comment__avatar">
+      <img alt="User photo" src="{{comment.user.avatarSrc}}">
+    </div>
+    <div class="comment__body">
+      <a class="comment__author"
+         [routerLink]="['../../feed']"
+         [queryParams]="{author: comment.user._id}">
+        {{comment.user.firstName}}  {{comment.user.lastName}}
+      </a>
+      <p class="comment__content">{{comment.content}}</p>
+      <p class="comment__date">Published {{comment.date | date : 'medium' }}</p>
+    </div>
+  </div>
+</article>
+<ng-template #noComments>
+  No comments here 😐
+</ng-template>
+

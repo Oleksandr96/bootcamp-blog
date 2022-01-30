@@ -1,0 +1,26 @@
+<section class="wrapper">
+  <div class="posts-list" *ngIf="posts.length > 0; else empty">
+    <h2>{{pageTitle}}</h2>
+    <app-post-card *ngFor="let p of (posts)" [post]="p"></app-post-card>
+
+    <div class="loader" *ngIf="!noMoreOrders">
+      <ng-template #spinner>
+        <mat-spinner
+          *ngIf="loading"></mat-spinner>
+      </ng-template>
+      <button *ngIf="!loading; else spinner"
+              mat-raised-button
+              (click)="loadMore()">Load more <mat-icon>expand_more</mat-icon>
+      </button>
+    </div>
+
+  </div>
+  <ng-template #empty>
+    <div class="center">Posts not found</div>
+  </ng-template>
+
+
+  <app-sidebar class="sidebar"></app-sidebar>
+</section>
+
+

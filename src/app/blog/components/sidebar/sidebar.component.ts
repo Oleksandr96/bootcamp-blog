@@ -19,6 +19,6 @@ export class SidebarComponent implements OnInit {
   public getPopular(): any {
     return this.appTagService
       .getPopular()
-      .subscribe((tags) => (this.tags = tags));
+      .subscribe((tags: Tag[]) => (this.tags = tags));
   }
 }

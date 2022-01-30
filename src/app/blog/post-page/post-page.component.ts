@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Post } from '../../interfaces/post.interface';
 import { Observable } from 'rxjs';
 import { AppPostsService } from '../../services/app-posts.service';
+import { AppUserService } from '../../services/app-user.service';
 
 @Component({
   selector: 'app-post-page',
@@ -11,10 +12,12 @@ import { AppPostsService } from '../../services/app-posts.service';
 })
 export class PostPageComponent {
   post!: Post | undefined;
+  loggedIn: boolean = false;
 
   constructor(
     private appPostsService: AppPostsService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private appAuthService: AppUserService
   ) {}
 
   getPost(): void {
@@ -26,5 +29,8 @@ export class PostPageComponent {
 
   ngOnInit(): void {
     this.getPost();
+    this.appAuthService
+      .isAuthenticated()
+      .subscribe((loggedIn) => (this.loggedIn = loggedIn));
   }
 }

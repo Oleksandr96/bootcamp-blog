@@ -1,0 +1,51 @@
+<mat-sidenav-container>
+
+  <mat-sidenav mode="side" opened>
+    <mat-card class="sidenav-container">
+      <h2 class="title">Admin Panel</h2>
+      <div class="actions">
+        <a mat-button
+           class="actions__button"
+           [routerLink]="['profile']"
+           routerLinkActive="active">
+          <mat-icon>info</mat-icon>
+          <span>My Profile</span>
+        </a>
+        <a mat-button
+           class="actions__button"
+           [routerLink]="['liked-posts']"
+           routerLinkActive="active">
+          <mat-icon>favorite</mat-icon>
+          <span>Liked Posts</span>
+        </a>
+        <div *ngIf="isAdmin">
+          <a mat-button
+             class="actions__button"
+             [routerLink]="['publications']"
+             routerLinkActive="active"
+          >
+            <mat-icon>notes</mat-icon>
+            <span>Publications</span>
+          </a>
+          <a mat-button
+             class="actions__button"
+             [routerLink]="['comments']"
+             routerLinkActive="active">
+            <mat-icon>comment</mat-icon>
+            <span>Comments</span>
+          </a>
+          <a mat-button
+             class="actions__button"
+             [routerLink]="['users']"
+             routerLinkActive="active">
+            <mat-icon>supervised_user_circle</mat-icon>
+            <span>Users</span>
+          </a>
+        </div>
+      </div>
+    </mat-card>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,68 @@
+<div mat-dialog-content>
+  <h2>Authorization</h2>
+  <form [formGroup]="authForm"
+        (ngSubmit)="submit()"
+        class="form">
+
+    <div class="form__item">
+      <mat-form-field class="input"
+                      appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput
+               placeholder="name@example.com"
+               type="email"
+               id="email"
+               name="email"
+               formControlName="email">
+      </mat-form-field>
+
+      <div *ngIf="authFormErrors.email"
+           class="validation">
+        <span>{{authFormErrors.email}}</span>
+      </div>
+    </div>
+
+    <div class="form__item">
+      <mat-form-field class="input"
+                      appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput
+               [type]="passwordHide ? 'password' : 'text'"
+               placeholder="Password"
+               type="password"
+               id="password"
+               name="password"
+               formControlName="password">
+        <button mat-icon-button
+                matSuffix
+                (click)="passwordHide = !passwordHide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="passwordHide">
+          <mat-icon>{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div *ngIf="authFormErrors.password"
+           class="validation">
+        <span>{{authFormErrors.password}}</span>
+
+      </div>
+    </div>
+    <!--<button mat-button (click)="dialogClose()">Cancel</button> -->
+    <button mat-raised-button
+            color="primary"
+            type="submit"
+            cdkFocusInitial
+            [disabled]="authForm.invalid || authForm.disabled">Login
+    </button>
+    <a mat-button
+       color="primary"
+       cdkFocusInitial
+       (click)="dialogClose()"
+       [routerLink]="['/registration']"
+    >Registration
+    </a>
+  </form>
+
+
+</div>

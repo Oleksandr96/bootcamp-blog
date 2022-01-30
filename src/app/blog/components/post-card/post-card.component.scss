@@ -1,0 +1,47 @@
+@import "src/styles/_variables.scss";
+
+.post {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  .meta {
+    display: flex;
+    align-content: space-between;
+  }
+
+  &__author {
+    width: 90%;
+  }
+
+  &__author-img {
+    width: 50px;
+    margin: 0 1rem 1rem 0;
+  }
+
+  &__author-name {
+    color: $green;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__date, &__read-more {
+    color: $dark-grey;
+    font-size: 12px;
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    color: $dark-grey;
+    margin-bottom: 1rem;
+  }
+
+
+}

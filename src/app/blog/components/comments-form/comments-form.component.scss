@@ -1,0 +1,17 @@
+@import "../../../../styles/variables";
+
+.comments-form{
+  margin-top: 2rem;
+  width: 50%;
+  &__title{
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  .form__item .textarea{
+    width: 100%;
+  }
+  &__submit{
+   right: 0;
+    color: red;
+  }
+}
