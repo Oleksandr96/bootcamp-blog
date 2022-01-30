@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PostFormComponent } from '../post-form/post-form.component';
-
 import { MatDialog } from '@angular/material/dialog';
 import { AuthFormComponent } from '../auth-form/auth-form.component';
-import { AppAuthService } from '../../../services/app-auth.service';
+import { AppUserService } from '../../../services/app-user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,13 +12,11 @@ import { AppAuthService } from '../../../services/app-auth.service';
 export class HeaderComponent implements OnInit {
   loggedIn: boolean = false;
 
-  constructor(public dialog: MatDialog, private authService: AppAuthService) {}
-
-  openPostDialog() {
-    this.dialog.open(PostFormComponent, {
-      width: '500px',
-    });
-  }
+  constructor(
+    public dialog: MatDialog,
+    private authService: AppUserService,
+    private router: Router
+  ) {}
 
   openAuthDialog() {
     this.dialog.open(AuthFormComponent, {
@@ -33,7 +30,8 @@ export class HeaderComponent implements OnInit {
       .subscribe((loggedIn: boolean) => (this.loggedIn = loggedIn));
   }
 
-  logout() {
+  logout(): void {
     this.authService.logout();
+    this.router.navigate(['/feed']);
   }
 }
