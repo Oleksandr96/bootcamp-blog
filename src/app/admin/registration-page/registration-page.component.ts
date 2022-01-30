@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { AppAuthService } from '../../services/app-auth.service';
+
 import { AppValidationService } from '../../services/app-validation.service';
 import { User } from '../../interfaces/user.interface';
 import { Router } from '@angular/router';
+import { AppUserService } from '../../services/app-user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registration-page',
@@ -44,9 +46,9 @@ export class RegistrationPageComponent implements OnInit {
   };
 
   constructor(
-    private appAuthService: AppAuthService,
+    private appAuthService: AppUserService,
     private appValidationService: AppValidationService,
-    private authService: AppAuthService,
+    private snackBar: MatSnackBar,
     private router: Router
   ) {}
 
@@ -55,7 +57,7 @@ export class RegistrationPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService
+    this.appAuthService
       .isAuthenticated()
       .subscribe((loggedIn: boolean) => (this.loggedIn = loggedIn));
 
@@ -76,12 +78,13 @@ export class RegistrationPageComponent implements OnInit {
         Validators.minLength(8),
       ]),
     });
-    this.registerForm.valueChanges.subscribe((x) =>
-      this.appValidationService.onFormChange(
-        this.registerForm,
-        this.registerFormErrors,
-        this.validationMessages
-      )
+    this.registerForm.valueChanges.subscribe(
+      (x) =>
+        (this.registerFormErrors = this.appValidationService.onFormChange(
+          this.registerForm,
+          this.registerFormErrors,
+          this.validationMessages
+        ))
     );
   }
 
@@ -89,11 +92,10 @@ export class RegistrationPageComponent implements OnInit {
     if (this.registerForm.valid) {
       this.registerForm.disable();
       const user: User = this.registerForm.value;
-      this.authSub = this.appAuthService
-        .register(user)
-        .subscribe((data: User) => {
-          console.log(data);
-        });
+      this.authSub = this.appAuthService.register(user).subscribe((res) => {
+        this.snackBar.open(res.message, 'Ok');
+        this.router.navigate(['/feed']);
+      });
     }
   }
 }
