@@ -12,11 +12,19 @@ const commentSchema = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
   postId: {
     ref: "Post",
     type: Schema.Types.ObjectId,
+  },
+  isApproved: {
+    type: Boolean,
+    default: false,
+  },
+  edited: {
+    type: Boolean,
+    default: false,
   },
 });
 

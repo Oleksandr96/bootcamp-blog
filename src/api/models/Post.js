@@ -6,9 +6,13 @@ const postSchema = new Schema({
     type: String,
     required: true,
   },
+  isDraft: {
+    type: Boolean,
+    default: false,
+  },
   date: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
   shortDescription: {
     type: String,

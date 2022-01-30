@@ -16,10 +16,11 @@ module.exports.login = async (req, res) => {
         const token = jwt.sign(
           {
             email: candidate.email,
+            isAdmin: candidate.isAdmin,
             userId: candidate._id,
           },
           conf.jwt,
-          { expiresIn: 60 * 60 }
+          { expiresIn: 60 * 60 * 24 }
         );
         res.status(200).json({
           token: `Bearer ${token}`,
@@ -55,7 +56,7 @@ module.exports.register = async (req, res) => {
         email,
         password: bcrypt.hashSync(password, salt),
       });
-      res.status(201).send(user);
+      res.status(201).json({ message: "Success!" });
     }
   } catch (e) {
     errorHandler(res, e);
@@ -64,21 +65,50 @@ module.exports.register = async (req, res) => {
 
 module.exports.update = async (req, res) => {
   try {
-    const { firstName, lastName, bio, email, password } = req.params;
-    const salt = bcrypt.genSaltSync(10);
+    let data = req.body;
+
+    if (data.password) {
+      const salt = bcrypt.genSaltSync(10);
+      data.password = bcrypt.hashSync(data.password, salt);
+    }
+
     const user = await UserModel.findByIdAndUpdate(
       { _id: req.params.id },
       {
-        firstName,
-        lastName,
-        bio,
-        email,
-        password: bcrypt.hashSync(password, salt),
-        avatarSrc: req.file ? req.file.path : "",
+        ...data,
+        avatarSrc: req.file ? req.file.path : "/uploads/user.png",
       },
       { new: true }
     );
+    res.status(200).json({ message: "Updated" });
+  } catch (e) {
+    errorHandler(res, e);
+  }
+};
+
+module.exports.getById = async (req, res) => {
+  try {
+    const user = await UserModel.findById(
+      { _id: req.user.id },
+      { password: 0 }
+    );
     res.status(200).send(user);
+  } catch (e) {
+    errorHandler(res, e);
+  }
+};
+
+module.exports.getAll = async (req, res) => {
+  try {
+    if (!req.user.isAdmin) return res.status(401).send("Unauthorized");
+
+    const users = await UserModel.find().select([
+      "firstName",
+      "lastName",
+      "email",
+      "isAdmin",
+    ]);
+    res.status(200).send(users);
   } catch (e) {
     errorHandler(res, e);
   }

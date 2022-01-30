@@ -14,7 +14,16 @@ router.patch(
   upload.single("image"),
   controller.update
 );
-
+router.get(
+  "/all",
+  passport.authenticate("jwt", { session: false }),
+  controller.getAll
+);
+router.get(
+  "",
+  passport.authenticate("jwt", { session: false }),
+  controller.getById
+);
 router.get("*", (req, res) => {
   res.status(404).json({ message: "Not found" });
 });
