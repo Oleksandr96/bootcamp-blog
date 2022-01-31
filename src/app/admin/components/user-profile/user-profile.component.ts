@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AppUserService } from '../../../services/app-user.service';
-import { AppValidationService } from '../../../services/app-validation.service';
+import { AppUserService } from '../../../services/user/app-user.service';
+import { AppValidationService } from '../../../services/validation/app-validation.service';
 import { User } from '../../../interfaces/user.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

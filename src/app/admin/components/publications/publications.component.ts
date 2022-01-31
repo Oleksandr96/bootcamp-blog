@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Post } from '../../../interfaces/post.interface';
-import { AppPostsService } from '../../../services/app-posts.service';
+import { AppPostsService } from '../../../services/posts/app-posts.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';

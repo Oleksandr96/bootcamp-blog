@@ -12,7 +12,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { FormControl } from '@angular/forms';
 import { map, Observable, startWith, Subscription } from 'rxjs';
-import { AppTagsService } from '../../../services/app-tags.service';
+import { AppTagsService } from '../../../services/tags/app-tags.service';
 import { Tag } from '../../../interfaces/tag.interface';
 
 @Component({

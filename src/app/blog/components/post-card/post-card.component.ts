@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../../../interfaces/post.interface';
-import { AppPostsService } from '../../../services/app-posts.service';
-import { AppUserService } from '../../../services/app-user.service';
+import { AppPostsService } from '../../../services/posts/app-posts.service';
+import { AppUserService } from '../../../services/user/app-user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

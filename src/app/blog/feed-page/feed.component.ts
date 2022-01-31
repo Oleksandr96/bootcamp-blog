@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AppPostsService } from '../../services/app-posts.service';
+import { AppPostsService } from '../../services/posts/app-posts.service';
 import { Post } from '../../interfaces/post.interface';
 import { Tag } from '../../interfaces/tag.interface';
 import { Subscription } from 'rxjs';
@@ -45,7 +45,7 @@ export class FeedComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.pSub.unsubscribe();
+    if (this.pSub) this.pSub.unsubscribe();
   }
 
   public fetch(): void {

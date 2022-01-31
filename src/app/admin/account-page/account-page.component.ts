@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { AppUserService } from '../../services/app-user.service';
+import { AppUserService } from '../../services/user/app-user.service';
 
 @Component({
   selector: 'app-account-page',

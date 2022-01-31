@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AppUserService } from '../../services/app-user.service';
+import { AppUserService } from '../../services/user/app-user.service';
 import {
   HttpEvent,
   HttpHandler,

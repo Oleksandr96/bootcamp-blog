@@ -13,7 +13,7 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { AuthFormComponent } from './shared/components/auth-form/auth-form.component';
 import { AdminModule } from './admin/admin.module';
 import { AuthTokenInterceptor } from './shared/classes/auth-token.interceptor';
-import { AppUserService } from './services/app-user.service';
+import { AppUserService } from './services/user/app-user.service';
 
 @NgModule({
   declarations: [
