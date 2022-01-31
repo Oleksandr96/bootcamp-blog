@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TagsComponent } from './tags.component';
+import { AppTagsService } from '../../../services/tags/app-tags.service';
+import { AppMockedTagsService } from '../../../services/tags/app-mocked-tags.service';
+import { MaterialModule } from '../../../shared/material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('TagsComponent', () => {
   let component: TagsComponent;
@@ -8,9 +12,10 @@ describe('TagsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TagsComponent ]
-    })
-    .compileComponents();
+      declarations: [TagsComponent],
+      providers: [{ provide: AppTagsService, useClass: AppMockedTagsService }],
+      imports: [MaterialModule, BrowserAnimationsModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

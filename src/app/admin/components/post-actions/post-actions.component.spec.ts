@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PostActionsComponent } from './post-actions.component';
+import { MaterialModule } from '../../../shared/material/material.module';
 
 describe('PostActionsComponent', () => {
   let component: PostActionsComponent;
@@ -8,9 +9,9 @@ describe('PostActionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PostActionsComponent ]
-    })
-    .compileComponents();
+      declarations: [PostActionsComponent],
+      imports: [MaterialModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

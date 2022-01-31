@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Comment } from '../../../interfaces/comment.interface';
-import { AppCommentsService } from '../../../services/app-comments.service';
+import { AppCommentsService } from '../../../services/comments/app-comments.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

@@ -1,8 +1,8 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Comment } from '../interfaces/comment.interface';
+import { Comment } from '../../interfaces/comment.interface';
 
 @Injectable({
   providedIn: 'root',

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Post } from '../../interfaces/post.interface';
-import { Observable } from 'rxjs';
-import { AppPostsService } from '../../services/app-posts.service';
-import { AppUserService } from '../../services/app-user.service';
+import { AppPostsService } from '../../services/posts/app-posts.service';
+import { AppUserService } from '../../services/user/app-user.service';
 
 @Component({
   selector: 'app-post-page',

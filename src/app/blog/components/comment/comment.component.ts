@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, Output } from '@angular/core';
-import { AppCommentsService } from '../../../services/app-comments.service';
+import { AppCommentsService } from '../../../services/comments/app-comments.service';
 import { Comment } from '../../../interfaces/comment.interface';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';

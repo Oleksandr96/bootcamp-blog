@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AppCommentsService } from '../../../services/app-comments.service';
+import { AppCommentsService } from '../../../services/comments/app-comments.service';
 import { Comment } from '../../../interfaces/comment.interface';
-import { AppValidationService } from '../../../services/app-validation.service';
+import { AppValidationService } from '../../../services/validation/app-validation.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';

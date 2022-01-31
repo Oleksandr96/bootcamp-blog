@@ -3,9 +3,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { User } from '../../../interfaces/user.interface';
-import { AppUserService } from '../../../services/app-user.service';
+import { AppUserService } from '../../../services/user/app-user.service';
 import { Subscription } from 'rxjs';
-import { AppValidationService } from '../../../services/app-validation.service';
+import { AppValidationService } from '../../../services/validation/app-validation.service';
 
 @Component({
   selector: 'app-auth-form',
@@ -45,7 +45,7 @@ export class AuthFormComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
 
-  submit(): void {
+  login(): void {
     if (this.authForm.valid) {
       this.authForm.disable();
       const user: User = this.authForm.value;

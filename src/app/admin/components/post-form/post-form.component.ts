@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Tag } from '../../../interfaces/tag.interface';
-import { AppPostsService } from '../../../services/app-posts.service';
-import { AppValidationService } from '../../../services/app-validation.service';
+import { AppPostsService } from '../../../services/posts/app-posts.service';
+import { AppValidationService } from '../../../services/validation/app-validation.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { Post } from '../../../interfaces/post.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';

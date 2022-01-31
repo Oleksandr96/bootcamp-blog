@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppTagsService } from '../../../services/app-tags.service';
+import { AppTagsService } from '../../../services/tags/app-tags.service';
 import { Tag } from '../../../interfaces/tag.interface';
 
 @Component({

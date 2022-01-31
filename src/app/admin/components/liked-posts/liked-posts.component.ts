@@ -1,8 +1,8 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { AppPostsService } from '../../../services/app-posts.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AppPostsService } from '../../../services/posts/app-posts.service';
 import { Post } from '../../../interfaces/post.interface';
 import { Subscription } from 'rxjs';
-import { AppUserService } from '../../../services/app-user.service';
+import { AppUserService } from '../../../services/user/app-user.service';
 
 @Component({
   selector: 'app-liked-posts',

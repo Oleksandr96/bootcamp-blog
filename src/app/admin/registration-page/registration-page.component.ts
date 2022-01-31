@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { AppValidationService } from '../../services/app-validation.service';
+import { AppValidationService } from '../../services/validation/app-validation.service';
 import { User } from '../../interfaces/user.interface';
 import { Router } from '@angular/router';
-import { AppUserService } from '../../services/app-user.service';
+import { AppUserService } from '../../services/user/app-user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -88,7 +88,7 @@ export class RegistrationPageComponent implements OnInit {
     );
   }
 
-  submit(): void {
+  register(): void {
     if (this.registerForm.valid) {
       this.registerForm.disable();
       const user: User = this.registerForm.value;
