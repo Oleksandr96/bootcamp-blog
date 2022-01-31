@@ -1,9 +1,9 @@
 const express = require("express");
 const passport = require("passport");
 const bodyParser = require("body-parser");
-const conf = require("./config/conf");
 const path = require("path");
 const cors = require("cors");
+const env = require("./config/env");
 
 const connectDb = require("./db/dbConnector");
 
@@ -12,7 +12,7 @@ const postsRoutes = require("./routes/post");
 const tagsRoutes = require("./routes/tag");
 const commentsRoutes = require("./routes/comment");
 
-const port = conf.port;
+const port = env.port;
 const app = express();
 
 class Server {
@@ -33,8 +33,8 @@ class Server {
     app.use(passport.initialize());
     require("./middleware/passport")(passport);
     app.use(cors());
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+    app.use(bodyParser.json({ limit: "50mb" }));
   }
 
   initRoutes() {

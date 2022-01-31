@@ -23,11 +23,13 @@ export class PublicationsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.appPostsService.fetch().subscribe((posts: Post[]) => {
-      this.dataSource = new MatTableDataSource(posts);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
+    this.appPostsService
+      .fetch({ offset: 0, limit: 0 })
+      .subscribe((posts: Post[]) => {
+        this.dataSource = new MatTableDataSource(posts);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      });
   }
 
   applyFilter($event: KeyboardEvent) {
