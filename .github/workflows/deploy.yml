@@ -19,4 +19,4 @@ jobs:
           npm i
           npm run api-install
           npm run build
-          npm run api-start
+          pm2 restart server
