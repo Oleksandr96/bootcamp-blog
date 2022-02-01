@@ -1,0 +1,22 @@
+name: Deploy to Digital Ocean droplet
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        script: |
+          cd /home/bootcamp-blog
+          git pull
+          npm i
+          npm run api-install
+          npm run build
+          npm run api-start
