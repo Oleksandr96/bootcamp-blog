@@ -29,7 +29,7 @@ export class FeedComponent implements OnInit, OnDestroy {
 
   loading: boolean = false;
   reloading: boolean = false;
-  noMoreOrders: boolean = false;
+  noMorePosts: boolean = false;
   pageTitle: string = 'Feed';
 
   constructor(
@@ -63,7 +63,7 @@ export class FeedComponent implements OnInit, OnDestroy {
       .fetch(params)
       .subscribe((posts: Post[]) => {
         this.posts = this.posts?.concat(posts);
-        this.noMoreOrders = posts.length < STEP;
+        this.noMorePosts = posts.length < STEP;
         this.loading = false;
         this.reloading = false;
       });

@@ -1,7 +1,7 @@
 const errorHandler = require("../utils/errorHandler");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const conf = require("../config/conf");
+const conf = require("../config/env");
 const UserModel = require("../models/User");
 
 module.exports.login = async (req, res) => {

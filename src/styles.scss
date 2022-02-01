@@ -77,12 +77,19 @@ mat-form-field {
 .mat-card-content {
   margin-top: 1rem;
 }
-table{
+
+table {
   width: 100%;
 }
-button.btn-group{
+
+button.btn-group {
   margin-left: 10px;
 }
-mat-sidenav-content{
+
+mat-sidenav-content {
   height: 100%;
+}
+
+.mat-progress-spinner {
+  margin: 0 auto;
 }
