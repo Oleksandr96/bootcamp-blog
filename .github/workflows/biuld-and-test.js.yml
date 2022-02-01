@@ -26,7 +26,7 @@ jobs:
     - name: Install packages
       run: npm run api-install
     - name: API start
-      run: npm run api-install
+      run: npm run api-start
     - name: Install FE-client packages
       run: npm i
     - name: Client build
