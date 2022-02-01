@@ -27,7 +27,5 @@ jobs:
       run: npm i
     - name: Client build
       run: npm run build
-    - name: Client Start
-      run: npm run start
     - name: Run testing  
       run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
