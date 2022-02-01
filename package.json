@@ -7,7 +7,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "api-install": "npm i --prefix src/api",
+    "api-start": "npm run start --prefix src/api"
   },
   "private": true,
   "dependencies": {
