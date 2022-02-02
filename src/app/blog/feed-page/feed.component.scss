@@ -2,15 +2,33 @@
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
+  flex-wrap: wrap;
 
   .posts-list {
-    width: 70%;
+    width: 75%;
+    padding: 0 1rem 0 0;
   }
 
   .sidebar {
-    width: 26%;
+    flex: 20%;
+    max-width: 25%;
+
   }
-  .loader{
+
+  .loader {
     text-align: center;
   }
+}
+
+@media (max-width: 800px) {
+  .wrapper {
+    flex-direction: column-reverse;
+
+    .posts-list, .sidebar {
+      width: 100%;
+      max-width: 100%;
+      flex: 100%;
+    }
+  }
+
 }

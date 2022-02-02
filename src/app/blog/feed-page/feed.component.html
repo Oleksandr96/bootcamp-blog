@@ -1,6 +1,6 @@
+<h2>{{pageTitle}}</h2>
 <section class="wrapper">
   <div class="posts-list" *ngIf="posts.length > 0; else empty">
-    <h2>{{pageTitle}}</h2>
     <app-post-card *ngFor="let p of (posts)" [post]="p"></app-post-card>
     <ng-template #spinner>
       <mat-spinner
@@ -10,7 +10,8 @@
 
       <button *ngIf="!loading; else spinner"
               mat-raised-button
-              (click)="loadMore()">Load more <mat-icon>expand_more</mat-icon>
+              (click)="loadMore()">Load more
+        <mat-icon>expand_more</mat-icon>
       </button>
     </div>
 
@@ -18,7 +19,6 @@
   <ng-template #empty>
     <div class="center">Loading...</div>
   </ng-template>
-
 
   <app-sidebar class="sidebar"></app-sidebar>
 </section>
