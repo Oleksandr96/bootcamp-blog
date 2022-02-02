@@ -7,6 +7,8 @@
 /coverage
 # Only exists if Bazel was run
 /bazel-out
+src/api/config/env.dev.js
+src/api/config/env.prod.js
 
 # dependencies
 /node_modules
