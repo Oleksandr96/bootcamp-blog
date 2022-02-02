@@ -1,5 +1,7 @@
 @import "styles/_variables.scss";
 
+/* Base styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -30,12 +32,6 @@ body {
   text-align: right;
 }
 
-mat-divider {
-  left: 1rem;
-  right: 1rem;
-  width: unset;
-}
-
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
@@ -60,12 +56,9 @@ a {
   color: $green;
   text-decoration: none;
 }
-img{
-  max-width: 100%;
-}
 
-mat-form-field {
-  width: 100%;
+img {
+  max-width: 100%;
 }
 
 .warning {
@@ -77,10 +70,6 @@ mat-form-field {
   border: 1px solid #cdcd00;
 }
 
-.mat-card-content {
-  margin-top: 1rem;
-}
-
 table {
   width: 100%;
 }
@@ -89,10 +78,30 @@ button.btn-group {
   margin-left: 10px;
 }
 
+/* Material elements override */
+
 mat-sidenav-content {
   height: 100%;
 }
 
 .mat-progress-spinner {
   margin: 0 auto;
+}
+
+.mat-card-content {
+  margin-top: 1rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.mat-table td.mat-cell {
+  padding: 3px;
+}
+
+mat-divider {
+  left: 1rem;
+  right: 1rem;
+  width: unset;
 }
