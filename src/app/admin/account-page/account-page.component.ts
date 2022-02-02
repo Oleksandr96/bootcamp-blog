@@ -1,12 +1,5 @@
-import {
-  AfterContentChecked,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { AppUserService } from '../../services/user/app-user.service';
 
 @Component({
@@ -14,34 +7,15 @@ import { AppUserService } from '../../services/user/app-user.service';
   templateUrl: './account-page.component.html',
   styleUrls: ['./account-page.component.scss'],
 })
-export class AccountPageComponent implements OnInit, AfterContentChecked {
+export class AccountPageComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isAdmin: boolean = false;
 
-  constructor(
-    private observer: BreakpointObserver,
-    public changeDetectorRef: ChangeDetectorRef,
-    private appUserService: AppUserService
-  ) {}
+  constructor(private appUserService: AppUserService) {}
 
   ngOnInit(): void {
     const token = this.appUserService.getTokenData();
     this.isAdmin = token.isAdmin;
-  }
-
-  ngAfterContentChecked() {
-    this.changeDetectorRef.detectChanges();
-    this.observer
-      .observe(['(max-width: 800px)'])
-      .subscribe((res: BreakpointState) => {
-        if (res.matches) {
-          this.sidenav.mode = 'over';
-          this.sidenav.close();
-        } else {
-          this.sidenav.mode = 'side';
-          this.sidenav.open();
-        }
-      });
   }
 }
